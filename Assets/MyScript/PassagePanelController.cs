@@ -6,53 +6,45 @@ public class PassagePanelController : MonoBehaviour
 {
     //===============================================================================
     /// <summary>
-    /// ‡@{‚T‡A{‚P‚O‡B~‚PD‚T‚İ‚½‚¢‚ÈŠ´‚¶‚Å
+    /// â‘ ï¼‹ï¼•â‘¡ï¼‹ï¼‘ï¼â‘¢Ã—ï¼‘ï¼ï¼•ã¿ãŸã„ãªæ„Ÿã˜ã§
     /// </summary>
     [SerializeField]
     private int iPositiveGimmickNum;
 
     /// <summary>
-    /// ƒMƒ~ƒbƒN‚²‚Æ‚É”{—¦‚ğİ’è‚·‚é
+    /// ã‚®ãƒŸãƒƒã‚¯ã”ã¨ã«å€ç‡ã‚’è¨­å®šã™ã‚‹
     /// </summary>
     [SerializeField]
     private float fMultiplyer = 1.5f;
 
     /// <summary>
-    /// ƒIƒuƒWƒFƒNƒg–¼‹L˜^—p
+    /// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåè¨˜éŒ²ç”¨
     /// </summary>
     private string[] sOBJName_PassedChara = new string[10];
 
     /// <summary>
-    /// ’Ê‰ß‚µ‚½OBJ‚Ì”
+    /// é€šéã—ãŸOBJã®æ•°
     /// </summary>
     private int iOBJCnt_PassedChara = 0;
 
     //===============================================================================
     /// <summary>
-    /// ‚·‚è‚Ê‚¯‚½‚Æ‚«
-    /// ‚·‚è‚Ê‚¯‚½ƒIƒuƒWƒFƒNƒg‚ğæ“¾‚µŠg‘å‘€ì‚ğ‚·‚é
+    /// ã™ã‚Šã¬ã‘ãŸã¨ã
+    /// ã™ã‚Šã¬ã‘ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã—æ‹¡å¤§æ“ä½œã‚’ã™ã‚‹
     /// </summary>
     public void  OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("PlayerCharacter"))
         {
-            //Šù‚É’Ê‰ß‚µ‚½ƒLƒƒƒ‰ƒNƒ^‚¾‚Á‚½ê‡”²‚¯‚é
+            //æ—¢ã«é€šéã—ãŸã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã ã£ãŸå ´åˆæŠœã‘ã‚‹
             for (int i=0;i<10;i++)
             {
-                if (sOBJName_PassedChara[i] == collision.gameObject.name)
-                {
-                    return;
-                }
+                if (sOBJName_PassedChara[i] == collision.gameObject.name)  return;
             }
 
-            //Debug.Log("‚·‚è‚Ê‚¯‚ğŒŸ’m‚µ‚Ü‚µ‚½B");
             sOBJName_PassedChara[iOBJCnt_PassedChara] = collision.gameObject.name;
             iOBJCnt_PassedChara++;
-
             collision.gameObject.transform.localScale = collision.gameObject.transform.localScale * fMultiplyer;
         }
-
-        //ƒMƒ~ƒbƒN‚Ìí—Ş‚²‚Æ‚Å”{—¦‚ğ•ªŠò‚³‚¹‚é
     }
-
 }
