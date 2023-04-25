@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MovingWallController : MonoBehaviour
 {
-
     //===============================================================================
     private float fCnt;
-
     public float fMoveDeltaX;
     private float fThisPosY;
     private float fThisPosZ;
 
-
+    //===============================================================================
     void Start()
     {
         fThisPosY = this.transform.position.y;
