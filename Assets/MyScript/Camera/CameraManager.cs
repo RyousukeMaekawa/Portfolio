@@ -5,14 +5,14 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     //==============================================================================================
-    [Tooltip("ƒLƒƒƒ‰‚ğ’Ç‚¢‚©‚¯‚éƒƒCƒ“ƒJƒƒ‰")]
+    [Tooltip("ã‚­ãƒ£ãƒ©ã‚’è¿½ã„ã‹ã‘ã‚‹ãƒ¡ã‚¤ãƒ³ã‚«ãƒ¡ãƒ©")]
     public GameObject OBJ_MainCamera;
-    [Tooltip("ƒS[ƒ‹ü•Ó‚Åg—p‚·‚éƒJƒƒ‰")]
+    [Tooltip("ã‚´ãƒ¼ãƒ«å‘¨è¾ºã§ä½¿ç”¨ã™ã‚‹ã‚«ãƒ¡ãƒ©")]
     public GameObject OBJ_SubCamera;
 
     //==============================================================================================
 
-    //ˆê“x‚Å‚à”»’èƒ|ƒCƒ“ƒg’Ê‰ß‚µ‚½‚©‚‘¬ˆÚ“®ƒ‚[ƒh‚É“ü‚Á‚½‚©‚ğ”»’è
+    //ä¸€åº¦ã§ã‚‚åˆ¤å®šãƒã‚¤ãƒ³ãƒˆé€šéã—ãŸã‹ï¼é«˜é€Ÿç§»å‹•ãƒ¢ãƒ¼ãƒ‰ã«å…¥ã£ãŸã‹ã‚’åˆ¤å®š
     private bool isOnceChangedTo_FastSpeed=false;
 
 
@@ -22,15 +22,11 @@ public class CameraManager : MonoBehaviour
         isOnceChangedTo_FastSpeed = false;
     }
 
-  
-
-    // Update is called once per frame
     void Update()
     {
-        //‚Ç‚ê‚©‚ÌƒLƒƒƒ‰‚ª‚‘¬ˆÚ“®ƒ‚[ƒh‚É‚È‚Á‚½‚Æ‚«Aˆê‰ñ‚¾‚¯‚¾‚¯ˆ—‚µ‚½‚¢
+        //ã©ã‚Œã‹ã®ã‚­ãƒ£ãƒ©ãŒé«˜é€Ÿç§»å‹•ãƒ¢ãƒ¼ãƒ‰ã«ãªã£ãŸã¨ãã€ä¸€å›ã ã‘ã ã‘å‡¦ç†ã—ãŸã„
         if (( !isOnceChangedTo_FastSpeed )&&(CommonValue.moveType_TargetPoint == CommonValue.MoveType_TargetPoint.FastSpeed))
         {
-            Debug.Log("ƒJƒƒ‰•ÏX");
             isOnceChangedTo_FastSpeed = true;
             StartCoroutine( IE_CameraChange() );
         }
@@ -40,6 +36,5 @@ public class CameraManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         OBJ_SubCamera.SetActive( true );
-
     }
 }
