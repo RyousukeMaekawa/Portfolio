@@ -17,13 +17,10 @@ public class GoalJudgeController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerCharacter"))
         {
-            //OBJ_ResultUI.SetActive(true);
             OBJ_PlayingUI.SetActive(false);
-
             CommonValue.moveType_TargetPoint = CommonValue.MoveType_TargetPoint.Goaled;
-
-            //ƒp[ƒeƒBƒNƒ‹‚Æ‚©‚ÌÜŽ^ˆ—‚à—~‚µ‚¢
-            Confetti.ManualStart();
+            
+            Confetti.ManualStart();  //ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã¨ã‹ã®è³žè³›å‡¦ç†ã‚‚æ¬²ã—ã„
 
             StartCoroutine(ResultUIActivate());
         }
