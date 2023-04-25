@@ -5,37 +5,28 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     //===============================================================
-    //OBJ“™
+    //OBJç­‰
     public Transform Tr_TargetPoint;
-    private Vector3 offset;      //‘Š‘Î‹——£æ“¾—p
-
+    private Vector3 offset;      //ç›¸å¯¾è·é›¢å–å¾—ç”¨
 
     //===============================================================
-    //•Ï”
+    //å¤‰æ•°
     public int iOffsetY = 10;
     public int iOffsetZ = -10;
 
     //===============================================================
-    //ŠÖ”
+    //é–¢æ•°
 
     void Start()
     {
-        // MainCamera(©•ª©g)‚Æplayer‚Æ‚Ì‘Š‘Î‹——£‚ğ‹‚ß‚é
+        // MainCamera(è‡ªåˆ†è‡ªèº«)ã¨playerã¨ã®ç›¸å¯¾è·é›¢ã‚’æ±‚ã‚ã‚‹
         offset = new Vector3( 0, iOffsetY, iOffsetZ );
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ( CommonValue.moveType_TargetPoint == CommonValue.MoveType_TargetPoint.FastSpeed )
-        {
-            //ˆÚ“®‘¬“x‚É‡‚í‚¹‚ÄƒJƒƒ‰‚ÌˆÚ“®‘¬“x‚à•Ï‚¦‚é‚×‚«‚©
-        }
-
-        //Debug.Log("XVˆ—ƒLƒeƒ‹;iCharaNum_MaxPosZ=" + iCharaNum_MaxPosZ);
         this.transform.position = Tr_TargetPoint.position + offset;
-
-        //ƒJƒƒ‰‚ÌŠp“x‚ÍŒÅ’è
         this.transform.rotation = Quaternion.Euler( 20, 0, 0 );
     }
 }
