@@ -7,18 +7,16 @@ public class WallPassStopPanelController : MonoBehaviour
     public UIManager UIManager;
 
     /// <summary>
-    /// ÚG‚µ‚½‚Æ‚«‚Æ‚«
+    /// åˆ¤å®šä¸åˆæ ¼çŠ¶æ…‹ã§å£ã«æ¥è§¦ã—ãŸã¨ã
+    ///ãƒ»ã‚­ãƒ£ãƒ©ãŒå£ã«ã‚ãŸã‚Šå€’ã‚Œã‚‹
+    ///ãƒ»ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼UIã®è¡¨ç¤º
     /// </summary>
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("PlayerCharacter"))
         {
-            //•Ç‚É‚ ‚½‚è“|‚ê‚é‚æ‚¤‚É‚µ‚½‚¢
             CommonValue.moveType_TargetPoint = CommonValue.MoveType_TargetPoint.FailToPass;
-
-            Debug.Log("•Ç“Ë”j¸”s");
             StartCoroutine(UIManager.ShowGameOver(1f));
         }
     }
-
 }
