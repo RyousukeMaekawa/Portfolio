@@ -9,9 +9,10 @@ public class GameDataManager : MonoBehaviour
     public UIManager UIManager;
     
     /// <summary>
-    /// Á‚¦‚Ä‚¢‚éƒLƒƒƒ‰‚ÌƒJƒEƒ“ƒg ƒQ[ƒ€ƒI[ƒo[”»’è—p‚Ég‚¤
+    /// æ¶ˆãˆã¦ã„ã‚‹ã‚­ãƒ£ãƒ©ã®ã‚«ã‚¦ãƒ³ãƒˆ ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼åˆ¤å®šç”¨ã«ä½¿ã†
     /// </summary>
     public ReactiveProperty<int> iCharaDisactiveCnt = new ReactiveProperty<int>(0);
+
 
     private void Start()
     {
@@ -21,11 +22,9 @@ public class GameDataManager : MonoBehaviour
             .Where(x => x >= 10)
             .Subscribe(x=>StartCoroutine(UIManager.ShowGameOver()));
 
-
         iCharaDisactiveCnt
             .Pairwise()
             .Where(x => x.Previous <= x.Current)
             .Subscribe(x=>UIManager.SetCharacterActiveCnt(x.Current));
     }
-
 }
