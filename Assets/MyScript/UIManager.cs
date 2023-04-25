@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// MVPƒfƒUƒCƒ“ƒpƒ^[ƒ“‚ğ–Úw‚·
+/// MVPãƒ‡ã‚¶ã‚¤ãƒ³ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç›®æŒ‡ã™
 /// </summary>
 public class UIManager : MonoBehaviour
 {
+ã€€  //OBJå‚ç…§===============================================================================
     public GameObject OBJ_GameOverUI;
-
     public TextMeshProUGUI Text_CharaActiveCnt;
 
+    //é–¢æ•°==================================================================================
+    
     public void OnClick_QuitGame()
     {
         RestartGame();
@@ -30,23 +32,17 @@ public class UIManager : MonoBehaviour
         OBJ_GameOverUI.SetActive(true);
     }
 
-
     /// <summary>
-    /// c‘¶‚µ‚Ä‚¢‚éƒLƒƒƒ‰‚Ì”‚ğXV
+    /// æ®‹å­˜ã—ã¦ã„ã‚‹ã‚­ãƒ£ãƒ©ã®æ•°ã‚’æ›´æ–°
     /// </summary>
-    /// <param name="iCharaCnt"></param>
     public void SetCharacterActiveCnt(int iCharaDisactiveCnt)
     {
         Text_CharaActiveCnt.text = "Remain : "+(10- iCharaDisactiveCnt).ToString();
     }
 
-
-
     private void RestartGame()
     {
-        Time.timeScale = 1.0f; //ŠÔ‹N“®
-        SceneManager.LoadScene(0); //ƒV[ƒ“‚ÌÄ“Ç‚İ‚İ
+        Time.timeScale = 1.0f; //æ™‚é–“èµ·å‹•
+        SceneManager.LoadScene(0); //ã‚·ãƒ¼ãƒ³ã®å†èª­ã¿è¾¼ã¿
     }
-
-
 }
