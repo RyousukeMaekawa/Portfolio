@@ -6,40 +6,33 @@ public class WallPassJudgePanelController : MonoBehaviour
 {
     //==============================================================================================
     /// <summary>
-    /// ’Ê‰ß’â~—p‚Ìƒpƒlƒ‹
+    /// é€šéåœæ­¢ç”¨ã®ãƒ‘ãƒãƒ«
     /// </summary>
     public GameObject OBJ_PassStopPanel;
 
-    [Header("•Ç“Ë”j‚Ì‡ŠiŠî€’l")]
+    [Header("å£çªç ´ã®åˆæ ¼åŸºæº–å€¤")]
     /// <summary>
-    /// •Ç“Ë”j‚Ì‡ŠiŠî€’l
+    /// å£çªç ´ã®åˆæ ¼åŸºæº–å€¤
     /// </summary>
     public float fPassingSize=1;
 
 
     //==============================================================================================
     /// <summary>
-    /// ÚG‚µ‚½‚Æ‚«‚Æ‚«
+    /// æ¥è§¦ã—ãŸã¨ãã¨ã
     /// </summary>
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("PlayerCharacter"))
         {
-            //•Ç‚Ü‚Å‘S—Í¾‘–‚Å‚Ô‚Â‚©‚é
+            //å£ã¾ã§å…¨åŠ›ç–¾èµ°ã§ã¶ã¤ã‹ã‚‹
             CommonValue.moveType_TargetPoint = CommonValue.MoveType_TargetPoint.FastSpeed;
 
-            //Šî€’l‚ğƒNƒŠƒA‚µ‚Ä‚¢‚½‚ç
+            //åŸºæº–å€¤ã‚’ã‚¯ãƒªã‚¢ã—ã¦ã„ãŸã‚‰
             if (collision.gameObject.transform.localScale.y >= fPassingSize)
             {
                 OBJ_PassStopPanel.SetActive(false);
-                //Debug.Log("•Ç“Ë”j”»’èF‡Ši");
-            }
-            //Šî€’l‚ğƒNƒŠƒA‚µ‚Ä‚¢‚È‚¯‚ê‚Î
-            else
-            {
-                //Debug.Log("•Ç“Ë”j”»’èF•s‡Ši");
             }
         }
     }
-
 }
