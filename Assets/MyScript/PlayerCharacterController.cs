@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerCharacterController : MonoBehaviour
 {
     //========================================================================
-    //SCRIPTQÆ
+    //SCRIPTå‚ç…§
     public GameDataManager GameDataManager;
 
-    //OBJQÆ
+    //OBJå‚ç…§
     public GameObject OBJ_Goal;
     public GameObject[] OBJAry_PlayerChara;
     public Transform target; 
     public Animator ThisAnimator;
 
     //========================================================================
-    //•Ï”
+    //å¤‰æ•°
     public float minDistance = 2.0f;
     public float maxSpeed = 5.0f;
     public float minSpeed = 1.0f;
@@ -26,14 +26,14 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector3 velocity;
     private float speed;
 
-
     /// <summary>
-    /// UPDATE‚Ì•‰‰×‚ğŒ¸‚ç‚·‚½‚ß‚Ì‹L˜^—p
+    /// UPDATEã®è² è·ã‚’æ¸›ã‚‰ã™ãŸã‚ã®è¨˜éŒ²ç”¨
     /// </summary>
     private int iPreValue_moveType=0;
 
+
     //========================================================================
-    //ŠÖ”
+    //é–¢æ•°
 
     private void Start()
     {
@@ -43,29 +43,25 @@ public class PlayerCharacterController : MonoBehaviour
    
     private void Update()
     {
-
         Vector3 direction = target.position - transform.position;
         float distance = direction.magnitude;
 
-        //ƒLƒƒƒ‰‚ÌƒAƒjƒ‚ğ•ÏX‚µ‚½‚¢
+        //ã‚­ãƒ£ãƒ©ã®ã‚¢ãƒ‹ãƒ¡ã‚’å¤‰æ›´ã—ãŸã„
         if( ( int )CommonValue.moveType_TargetPoint != iPreValue_moveType )
         {
             iPreValue_moveType = ( int )CommonValue.moveType_TargetPoint;
             ThisAnimator.SetInteger( "moveType", iPreValue_moveType );
-            //Debug.Log( "moveType="+iPreValue_moveType );
         }
 
-
-        //•Ç‚Ì”j‰ó‚É¸”s‚µ‚Ä‚¢‚é‚Æ‚«
+        //å£ã®ç ´å£Šã«å¤±æ•—ã—ã¦ã„ã‚‹ã¨ã
         if ( CommonValue.moveType_TargetPoint == CommonValue.MoveType_TargetPoint.FailToPass)
         {
-            //Debug.Log("¸”s‚µ‚Ä“|‚ê‚é");
             rigidBody.freezeRotation = false;
             this.transform.Rotate(8,0,0);
             this.enabled = false;
         }
 
-        //°‚ÌˆÊ’u‚æ‚èã‚ÅŠ‚ÂAƒ^[ƒQƒbƒg‚©‚ç‹K’è’lˆÈã—£‚ê‚Ä‚¢‚é‚Æ‚«A
+        //åºŠã®ä½ç½®ã‚ˆã‚Šä¸Šã§ä¸”ã¤ã€ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‹ã‚‰è¦å®šå€¤ä»¥ä¸Šé›¢ã‚Œã¦ã„ã‚‹ã¨ãã€
         else if ((distance > minDistance)&&(this.transform.position.y >= 0f))
         {
             float speedFactor = Mathf.InverseLerp(minDistance, 0.0f, distance);
@@ -90,34 +86,24 @@ public class PlayerCharacterController : MonoBehaviour
             desiredVelocity.y = -5f;
             velocity = Vector3.Lerp(velocity, desiredVelocity, Time.deltaTime * turnSpeed);
         }
-        //‚»‚êˆÈŠO‚Ì‚Í‰º‚É—‰º‚³‚¹‚é
+        //ãã‚Œä»¥å¤–ã®æ™‚ã¯ä¸‹ã«è½ä¸‹ã•ã›ã‚‹
         else
         {
             speed = 0.0f;
             velocity = Vector3.down* Time.deltaTime*50f;
         }
 
-        //ÅŒã‚É‰ºŒü‚«‚Ì—Í‚ğ’Ç‰Á
-        //velocity += Vector3.down * 0.1f;
-
-        //‚¿‚å‚Á‚Æ‚Å‚à‰º‚É—‚¿‚½‚ç—‰º‘¬“x‚ğ‰Á‘¬‚³‚¹‚é
-        if (this.transform.position.y < -0.01f)
-            velocity += Vector3.down * 1.8f;
-
+        //ã¡ã‚‡ã£ã¨ã§ã‚‚ä¸‹ã«è½ã¡ãŸã‚‰è½ä¸‹é€Ÿåº¦ã‚’åŠ é€Ÿã•ã›ã‚‹
+        if (this.transform.position.y < -0.01f) velocity += Vector3.down * 1.8f;
 
         rigidBody.rotation = Quaternion.LookRotation(OBJ_Goal.transform.position);/*.FromToRotation(this.transform.position,OBJ_Goal.transform.position);*/
         rigidBody.velocity = velocity;
 
-
-        //‚ ‚é’ö“x‰º‚És‚Á‚½‚çÁ‚·
+        //ã‚ã‚‹ç¨‹åº¦ä¸‹ã«è¡Œã£ãŸã‚‰æ¶ˆã™
         if(this.transform.position.y < -5f)
         {
             this.gameObject.SetActive(false);
             GameDataManager.iCharaDisactiveCnt.Value++;
         }
-
     }
-
 }
-
-
